@@ -1,12 +1,8 @@
-const express = require("express");
-const app = express();
+const server = require("./api/server");
 require("dotenv").config();
-const port = process.env.PORT || 5000; // .env dosyasındaki PORT değeri veya varsayılan 3000
 
-app.get("/", (req, res) => {
-  res.send("Merhaba, Twitter klonuna hoş geldiniz!");
-});
+const port = process.env.PORT || 9000;
 
-app.listen(port, () => {
-  console.log(`Sunucu ${port} portunda çalışıyor...`);
+server.listen(port, () => {
+  console.log(`server is listening on ${port}`);
 });
