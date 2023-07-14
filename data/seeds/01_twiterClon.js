@@ -30,26 +30,29 @@ exports.seed = async function (knex) {
       tarih: new Date(),
     },
   ]);
- 
+
   await knex("posts").insert([
     {
       post_id: 1,
       user_id: 1,
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae.",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae.",
       like_sayisi: 0,
       tarih: new Date(),
     },
     {
       post_id: 2,
       user_id: 2,
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae.",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae.",
       like_sayisi: 0,
       tarih: new Date(),
     },
     {
       post_id: 3,
       user_id: 3,
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae.",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae.",
       like_sayisi: 0,
       tarih: new Date(),
     },
@@ -68,7 +71,7 @@ exports.seed = async function (knex) {
       comment_id: 2,
       post_id: 2,
       user_id: 2,
-      content:"Çok Haklısın :)",
+      content: "Çok Haklısın :)",
       like_sayisi: 0,
       tarih: new Date(),
     },
@@ -81,7 +84,7 @@ exports.seed = async function (knex) {
       tarih: new Date(),
     },
   ]);
-     
+
   await knex("likes").insert([
     {
       like_id: 1,

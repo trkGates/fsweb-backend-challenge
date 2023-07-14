@@ -3,8 +3,15 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+
 module.exports = {
   development: {
+    migrations: {
+      directory: "./data/migrations", // npx knex migrate:make
+    },
+    seeds: {
+      directory: "./data/seeds", // npx knex migrate:latest
+    },
     client: "sqlite3",
     connection: {
       filename: "./data/dev.sqlite3",

@@ -8,6 +8,7 @@ server.get("/", (req, res) => {
 });
 
 server.use("/users", require("./users/users-router"));
+server.use("/posts", require("./posts/post-router"));
 
 server.use((err, req, res, next) => {
   res.status(err.status || 500).json({
