@@ -17,7 +17,7 @@ exports.addUser = (user) => {
 };
 
 exports.updateUser = (id, user) => {
-  return db("users").where("user_id", id).update(user);
+  return db("users").where("user_id", id).update(user).returning("*");
 };
 
 exports.deleteUser = (id) => {
