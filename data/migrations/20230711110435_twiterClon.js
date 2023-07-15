@@ -9,7 +9,7 @@ exports.up = function (knex) {
       table.string("username", 255).notNullable();
       table.string("password", 255).notNullable();
       table.string("email", 255).notNullable();
-      table.string("avatar", 255).notNullable();
+      table.string("avatar");
       table.timestamp("tarih").defaultTo(knex.fn.now());
     })
     .createTable("posts", function (table) {
@@ -34,9 +34,9 @@ exports.up = function (knex) {
       table.increments("like_id");
       table.integer("user_id").unsigned().notNullable();
       table.foreign("user_id").references("user_id").inTable("users");
-      table.integer("post_id").unsigned().notNullable();
+      table.integer("post_id").unsigned();
       table.foreign("post_id").references("post_id").inTable("posts");
-      table.integer("comment_id").unsigned().notNullable();
+      table.integer("comment_id").unsigned();
       table.foreign("comment_id").references("comment_id").inTable("comments");
       table.timestamp("tarih").defaultTo(knex.fn.now());
     });

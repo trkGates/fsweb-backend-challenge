@@ -27,7 +27,7 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const { username, password, email, avatar } = req.body;
+    const { username, password, email } = req.body;
     if (!username) {
       return res.status(400).json({ message: "Username is required" });
     }
@@ -36,9 +36,6 @@ router.post("/", async (req, res, next) => {
     }
     if (!email) {
       return res.status(400).json({ message: "Email is required" });
-    }
-    if (!avatar) {
-      return res.status(400).json({ message: "Avatar is required" });
     }
     const newUser = await usersModel.addUser(req.body);
     res.status(201).json(newUser);
