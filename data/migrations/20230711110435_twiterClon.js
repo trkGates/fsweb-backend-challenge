@@ -17,7 +17,7 @@ exports.up = function (knex) {
       table.integer("user_id").unsigned().notNullable();
       table.foreign("user_id").references("user_id").inTable("users");
       table.string("content", 255).notNullable();
-      table.integer("like_sayisi").notNullable();
+      table.integer("like_sayisi").defaultTo(0);
       table.timestamp("tarih").defaultTo(knex.fn.now());
     })
     .createTable("comments", function (table) {

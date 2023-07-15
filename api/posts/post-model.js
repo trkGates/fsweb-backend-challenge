@@ -25,4 +25,29 @@ exports.getPostByUserId = (id) => {
     }
     
 
+    async function incrementLikeCount(post_id) {
+        try {
+          await db("posts")
+            .where("post_id", post_id)
+            .increment("like_sayisi", 1);
+        } catch (error) {
+          throw error;
+        }
+      }
+
+      async function decrementLikeCount(post_id) {
+        try {
+          await db("posts")
+            .where("post_id", post_id)
+            .decrement("like_sayisi", 1);
+        } catch (error) {
+          throw error;
+        }
+      }
+
+      module.exports = {
+        incrementLikeCount, // Yeni eklediğimiz fonksiyonu burada da export ediyoruz.
+        decrementLikeCount,
+      };
+
 

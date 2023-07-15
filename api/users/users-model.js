@@ -23,3 +23,4 @@ exports.updateUser = (id, user) => {
 exports.deleteUser = (id) => {
   return db("users").where("user_id", id).del();
 };
+
