@@ -66,7 +66,7 @@ router.delete("/:id", async (req, res, next) => {
     const silinenKullanici = await usersModel.getUserById(req.params.id);
     const deletedUser = await usersModel.deleteUser(req.params.id);
     if (!deletedUser) {
-      res.status(404).json({ message: "Kullanıcı bulunamadı!..." });
+      res.status(404).json({ message: "Kullanıcı bulunamaedı!..." });
     } else {
       res.status(200).json(silinenKullanici);
     }

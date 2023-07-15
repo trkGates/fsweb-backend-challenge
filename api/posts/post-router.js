@@ -54,7 +54,9 @@ routerPost.delete("/:id", async (req, res, next) => {
     const silinenPost = await postsModel.getPostById(req.params.id);
     const post = await postsModel.deletePost(req.params.id);
     if (!silinenPost && !post) {
-      res.status(404).json({ message: "Post bulunamadı veya silinirken hata oluştu" });
+      res
+        .status(404)
+        .json({ message: "Post bulunamadı veya silinirken hata oluştu" });
     } else {
       res.status(200).json(silinenPost);
     }
@@ -71,6 +73,5 @@ routerPost.get("/user/:id", async (req, res, next) => {
     next(err);
   }
 });
-
 
 module.exports = routerPost;
