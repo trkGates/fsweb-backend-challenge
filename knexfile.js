@@ -7,10 +7,10 @@
 module.exports = {
   development: {
     migrations: {
-      directory: "./data/migrations", // npx knex migrate:make
+      directory: "./data/migrations", // npx knex migrate:latest
     },
     seeds: {
-      directory: "./data/seeds", // npx knex migrate:latest
+      directory: "./data/seeds", // npx knex seed:run
     },
     client: "sqlite3",
     connection: {

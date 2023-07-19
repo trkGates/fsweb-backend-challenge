@@ -32,43 +32,28 @@ router.get("/commentid/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const { post_id, comment_id, user_id } = req.body;
-    if (!user_id) {
-      return res.status(400).json({ message: "User id is required" });
+    //userİdvePostİdVarMi kontrolü yap
+    const varMi = await likesModel.userİdvePostİdVarMi(
+      req.body.user_id,
+      req.body.post_id
+    );
+    if (varMi) {
+      const updatedLike = await likesModel.updateLike(req.body);
+      res.status(200).json(updatedLike);
+    } else {
+      const like = await likesModel.getCreateLike(req.body);
+      res.status(201).json(like);
     }
-
-    // Kullanıcının var olup olmadığını kontrol edin
-    const userExists = await usersModel.getUserById(user_id);
-    if (!userExists) {
-      return res.status(404).json({ message: "Kullanıcı bulunamadı." });
-    }
-
-    // Kullanıcının zaten belirtilen gönderiye like atıp atmadığını kontrol edin
-    const existingLike = await likesModel.getLikeByUserIdAndPostId(user_id, post_id);
-    if (existingLike) {
-      // Kullanıcı beğeniyi iptal etmek istemiş, beğeniyi kaldırın
-      await likesModel.removeLikeByUserIdAndPostId(user_id, post_id);
-
-      // Gönderinin like_sayisi alanını azaltın
-      await postsModel.decrementLikeCount(post_id);
-
-      return res.status(200).json({ message: "Beğeni başarıyla iptal edildi." });
-    }
-
-    // Yeni beğeni ekleyin
-    const newLike = await likesModel.getCreateLike(req.body);
-
-    // "post_id" varsa ilgili gönderinin "like_sayisi" alanını güncelleyin
-    if (post_id) {
-      await postsModel.incrementLikeCount(post_id);
-    }
-
-    res.status(201).json(newLike);
   } catch (err) {
     next(err);
   }
 });
 
-
+router.delete("/:user_id/:post_id", async (req, res, next) => {
+  try {
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;

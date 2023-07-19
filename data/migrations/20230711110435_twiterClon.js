@@ -36,8 +36,10 @@ exports.up = function (knex) {
       table.foreign("user_id").references("user_id").inTable("users");
       table.integer("post_id").unsigned();
       table.foreign("post_id").references("post_id").inTable("posts");
-      table.integer("comment_id").unsigned();
+      table.boolean("post_like").defaultTo(false);
+      table.string("comment_id").unsigned();
       table.foreign("comment_id").references("comment_id").inTable("comments");
+      table.boolean("comment_like").defaultTo(false);
       table.timestamp("tarih").defaultTo(knex.fn.now());
     });
 };
